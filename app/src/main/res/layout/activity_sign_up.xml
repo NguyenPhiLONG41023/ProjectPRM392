@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:fillViewport="true"
     android:id="@+id/main"
-    tools:context=".LoginActivity">
+    tools:context=".SignUpActivity">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -23,35 +23,21 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="105dp"
-            android:text="Welcome"
+            android:text="Sign Up"
             android:textColor="#1D1E20"
             android:textSize="28sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/login_form"
+            app:layout_constraintBottom_toTopOf="@+id/signup_form"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="Please enter your data to continue"
-            android:textColor="#8F959E"
-            android:textSize="15sp"
-            app:layout_constraintBottom_toTopOf="@+id/login_form"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView"
-            app:layout_constraintVertical_bias="0.0" />
-
         <LinearLayout
-            android:id="@+id/login_form"
+            android:id="@+id/signup_form"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -73,10 +59,10 @@
                 tools:ignore="TextSizeCheck" />
 
             <EditText
-                android:id="@+id/login_username"
+                android:id="@+id/signup_username"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Enter your username"
+                android:hint="Enter username"
                 tools:ignore="TouchTargetSizeCheck" />
 
             <TextView
@@ -87,35 +73,37 @@
                 android:text="Password" />
 
             <EditText
-                android:id="@+id/login_password"
+                android:id="@+id/signup_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Enter your password"
+                android:hint="Enter password"
+                tools:ignore="TouchTargetSizeCheck" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:textSize="13sp"
+                android:text="Email Address" />
+
+            <EditText
+                android:id="@+id/signup_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter email address"
                 tools:ignore="TouchTargetSizeCheck" />
         </LinearLayout>
-
-        <TextView
-            android:id="@+id/login_forgotpassword"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="Forgot password?"
-            android:textColor="#EA4335"
-            android:textSize="15sp"
-            app:layout_constraintRight_toRightOf="@id/login_form"
-            app:layout_constraintTop_toBottomOf="@+id/login_form"
-            tools:ignore="TextSizeCheck" />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="157dp"
             android:layout_marginBottom="20dp"
             android:gravity="center"
             android:orientation="horizontal"
-            app:layout_constraintBottom_toTopOf="@+id/login_button"
-            app:layout_constraintRight_toRightOf="@+id/login_forgotpassword"
-            app:layout_constraintTop_toBottomOf="@+id/login_forgotpassword"
+            app:layout_constraintBottom_toTopOf="@+id/signup_button"
+            app:layout_constraintRight_toRightOf="@+id/signup_form"
+            app:layout_constraintTop_toBottomOf="@+id/signup_form"
             app:layout_constraintVertical_bias="1.0">
 
             <TextView
@@ -123,7 +111,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="5dp"
-                android:text="Don't have a account?"
+                android:text="Already have an account?"
                 android:textColor="#8F959E"
                 android:textSize="15sp" />
 
@@ -131,21 +119,21 @@
                 android:id="@+id/terms_link"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Register"
-                android:textStyle="bold"
+                android:text="Signin"
                 android:textColor="#1D1E20"
-                android:textSize="15sp" />
+                android:textSize="15sp"
+                android:textStyle="bold" />
         </LinearLayout>
 
 
         <Button
-            android:id="@+id/login_button"
+            android:id="@+id/signup_button"
             android:layout_width="match_parent"
             android:layout_height="75dp"
             android:layout_gravity="center"
             android:background="#9775FA"
             android:gravity="center"
-            android:text="Login"
+            android:text="Sign Up"
             android:textColor="#FEFEFE"
             android:textSize="18sp"
             android:textStyle="normal"
