@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        app:showAsAction="always"
+        android:id="@+id/menu_accountInfomation"
+        android:icon="@drawable/icon_accountinfo"
+        android:title="Account Information"/>
+    <item
+        app:showAsAction="always"
+        android:id="@+id/menu_order"
+        android:icon="@drawable/icon_order"
+        android:title="Order"/>
+    <item
+        app:showAsAction="always"
+        android:id="@+id/menu_settings"
+        android:icon="@drawable/icon_setting"
+        android:title="Settings"/>
+</menu>

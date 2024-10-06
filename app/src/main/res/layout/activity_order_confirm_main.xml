@@ -23,42 +23,32 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="105dp"
-            android:text="Forgot Password"
-            android:textColor="#1D1E20"
-            android:textSize="28sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/login_form"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
-
         <ImageView
             android:id="@+id/imageView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="4dp"
             android:layout_marginEnd="8dp"
+            android:layout_marginTop="100dp"
             android:adjustViewBounds="true"
-            android:src="@drawable/forgotpassword"
+            android:src="@drawable/orderconfirmimg"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            tools:layout_editor_absoluteY="108dp" />
 
         <LinearLayout
             android:id="@+id/login_form"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
+            android:layout_marginBottom="131dp"
+            android:gravity="center"
             android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/login_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView2">
@@ -67,37 +57,23 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
-                android:text="Email Address"
-                android:textSize="13sp"
+                android:text="Order Confirmed!"
+                android:textColor="#1D1E20"
+                android:textSize="28sp"
+                android:textStyle="bold"
                 tools:ignore="TextSizeCheck" />
 
-            <EditText
-                android:id="@+id/login_username"
-                android:layout_width="match_parent"
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Enter your registerd email"
-                tools:ignore="TouchTargetSizeCheck" />
+                android:layout_marginStart="4dp"
+                android:gravity="center"
+                android:text="Your order has been confirmed, we will send you confirmation email shortly."
+                android:textColor="#8F959E"
+                android:textSize="15sp"
+                tools:ignore="TextSizeCheck" />
         </LinearLayout>
 
-
-        <TextView
-            android:id="@+id/terms_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="56dp"
-            android:layout_marginTop="50dp"
-            android:layout_marginEnd="56dp"
-            android:layout_marginBottom="25dp"
-            android:gravity="center"
-            android:text="Please write your email to receive a confirmation code to set a new password."
-            android:textColor="#8F959E"
-            android:textSize="13sp"
-            app:layout_constraintBottom_toTopOf="@id/login_button"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/login_form"
-            app:layout_constraintVertical_bias="1.0" />
 
         <Button
             android:id="@+id/login_button"
@@ -106,7 +82,7 @@
             android:layout_gravity="center"
             android:background="#9775FA"
             android:gravity="center"
-            android:text="Confirm Mail"
+            android:text="Continue Shopping"
             android:textColor="#FEFEFE"
             android:textSize="18sp"
             android:textStyle="normal"

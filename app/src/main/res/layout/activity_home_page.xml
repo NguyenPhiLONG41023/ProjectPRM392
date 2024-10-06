@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawerLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:openDrawer="start">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".HomePageActivity">
 
-    <ImageView
+    <ImageButton
         android:id="@+id/menu"
         android:layout_width="45dp"
         android:layout_height="45dp"
@@ -17,12 +24,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
+    <ImageButton
         android:id="@+id/cart"
         android:layout_width="45dp"
         android:layout_height="45dp"
-        android:layout_marginEnd="20dp"
         android:layout_marginTop="45dp"
+        android:layout_marginEnd="20dp"
         android:background="@drawable/icon_cart"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -31,47 +38,154 @@
         android:id="@+id/hellomsg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="5dp"
+        android:orientation="vertical"
         app:layout_constraintLeft_toLeftOf="@id/menu"
-        app:layout_constraintTop_toBottomOf="@id/menu"
-        android:orientation="vertical">
+        app:layout_constraintTop_toBottomOf="@id/menu">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Hello"
             android:textColor="#1D1E20"
             android:textSize="28sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Welcome to Laza"
             android:textColor="#8F959E"
-            android:textSize="15sp"/>
+            android:textSize="15sp" />
     </LinearLayout>
-    
+
     <LinearLayout
         android:id="@+id/search_bar"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
         android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
         android:background="@drawable/search_style"
         app:layout_constraintTop_toBottomOf="@id/hellomsg">
-        
+
         <ImageButton
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_gravity="center"
             android:layout_margin="17dp"
-            android:background="@drawable/icon_search"/>
-        
+            android:background="@drawable/icon_search"
+            tools:ignore="TouchTargetSizeCheck" />
+
         <EditText
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="Search..."
-            />
+            tools:ignore="TouchTargetSizeCheck" />
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/brand_section"
+        android:layout_width="match_parent"
+        android:layout_height="84dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/search_bar">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Choose Brand"
+                android:textColor="#1D1E20"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/home_viewAll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="View All"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- Scroll view cho các logo thương hiệu -->
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="5dp"
+            android:paddingBottom="10dp"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/brand_adidas"
+                    android:layout_width="115dp"
+                    android:layout_height="50dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/iconbrand_adidas"
+                    android:contentDescription="Adidas" />
+
+                <ImageButton
+                    android:id="@+id/brand_nike"
+                    android:layout_width="98dp"
+                    android:layout_height="50dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/iconbrand_nike"
+                    android:contentDescription="Nike" />
+
+                <ImageButton
+                    android:id="@+id/brand_fila"
+                    android:layout_width="91dp"
+                    android:layout_height="50dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/iconbrand_fila"
+                    android:contentDescription="Fila" />
+
+                <ImageButton
+                    android:id="@+id/brand_puma"
+                    android:layout_width="106dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/iconbrand_puma"
+                    android:contentDescription="Puma" />
+            </LinearLayout>
+        </HorizontalScrollView>
+
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/home_listProduct"
+        android:layout_width="match_parent"
+        android:layout_height="432dp"
+        android:orientation="vertical"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintTop_toBottomOf="@id/brand_section"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- Drawer Menu -->
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigationView"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/nav_header"
+        app:menu="@menu/menu" />
+</androidx.drawerlayout.widget.DrawerLayout>
