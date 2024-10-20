@@ -168,17 +168,20 @@
 
     </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
+    <GridView
         android:id="@+id/home_listProduct"
         android:layout_width="match_parent"
-        android:layout_height="432dp"
-        android:orientation="vertical"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
+        android:numColumns="2"
+        android:verticalSpacing="10dp"
+        android:gravity="center"
         app:layout_constraintTop_toBottomOf="@id/brand_section"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
     <!-- Drawer Menu -->
@@ -189,5 +192,7 @@
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header"
-        app:menu="@menu/menu" />
+        app:menu="@menu/menu"
+        android:visibility="gone"
+        />
 </androidx.drawerlayout.widget.DrawerLayout>

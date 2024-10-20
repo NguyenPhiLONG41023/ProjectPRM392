@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:elevation="4dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp">
+
+        <!-- Image of the Product -->
+        <ImageView
+            android:id="@+id/cart_item_image"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginEnd="8dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_launcher_background" />
+
+        <!-- Product details container -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <!-- Product Title -->
+            <TextView
+                android:id="@+id/cart_item_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Men's Tie-Dye T-Shirt"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/black" />
+
+
+            <!-- Product Price -->
+            <TextView
+                android:id="@+id/cart_item_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2VND"
+                android:textSize="14sp"
+                android:textColor="@android:color/holo_green_dark" />
+
+            <!-- Quantity and Remove Button -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginTop="4dp">
+
+                <!-- Decrease Quantity Button -->
+                <ImageButton
+                    android:id="@+id/button_decrease_quantity"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:background="@drawable/icon_arrowdown"
+                    android:contentDescription="Decrease quantity"
+                    android:padding="4dp" />
+
+                <!-- Quantity Text -->
+                <TextView
+                    android:id="@+id/cart_item_quantity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:text="1"
+                    android:textSize="16sp" />
+
+                <!-- Increase Quantity Button -->
+                <ImageButton
+                    android:id="@+id/button_increase_quantity"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:background="@drawable/icon_arrowup"
+                    android:contentDescription="Increase quantity"
+                    android:padding="4dp"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Remove Button -->
+        <ImageButton
+            android:id="@+id/button_remove_item"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="@drawable/icon_delete"
+            android:contentDescription="Remove item"
+            android:padding="4dp"/>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
