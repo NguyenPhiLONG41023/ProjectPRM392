@@ -8,6 +8,11 @@
         android:title="Account Information"/>
     <item
         app:showAsAction="always"
+        android:id="@+id/menu_product"
+        android:icon="@drawable/icon_phone"
+        android:title="Account Information"/>
+    <item
+        app:showAsAction="always"
         android:id="@+id/menu_order"
         android:icon="@drawable/icon_order"
         android:title="Order"/>

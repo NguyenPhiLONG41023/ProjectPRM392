@@ -72,14 +72,17 @@
         app:layout_constraintTop_toBottomOf="@id/hellomsg">
 
         <ImageButton
+            android:id="@+id/search_button"
             android:layout_width="20dp"
             android:layout_height="20dp"
+            android:padding="20dp"
             android:layout_gravity="center"
             android:layout_margin="17dp"
             android:background="@drawable/icon_search"
             tools:ignore="TouchTargetSizeCheck" />
 
         <EditText
+            android:id="@+id/search_input"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="Search..."
@@ -133,34 +136,34 @@
                 android:orientation="horizontal">
 
                 <ImageButton
-                    android:id="@+id/brand_adidas"
-                    android:layout_width="115dp"
+                    android:id="@+id/brand_apple"
+                    android:layout_width="100dp"
                     android:layout_height="50dp"
                     android:layout_marginEnd="10dp"
-                    android:background="@drawable/iconbrand_adidas"
-                    android:contentDescription="Adidas" />
+                    android:background="@drawable/logo_apple"
+                    android:contentDescription="Iphone" />
 
                 <ImageButton
-                    android:id="@+id/brand_nike"
-                    android:layout_width="98dp"
+                    android:id="@+id/brand_xiaomi"
+                    android:layout_width="100dp"
                     android:layout_height="50dp"
                     android:layout_marginEnd="10dp"
-                    android:background="@drawable/iconbrand_nike"
+                    android:background="@drawable/logo_xiaomi"
                     android:contentDescription="Nike" />
 
                 <ImageButton
-                    android:id="@+id/brand_fila"
-                    android:layout_width="91dp"
+                    android:id="@+id/brand_samsung"
+                    android:layout_width="100dp"
                     android:layout_height="50dp"
                     android:layout_marginEnd="10dp"
-                    android:background="@drawable/iconbrand_fila"
+                    android:background="@drawable/logo_samsung"
                     android:contentDescription="Fila" />
 
                 <ImageButton
-                    android:id="@+id/brand_puma"
-                    android:layout_width="106dp"
+                    android:id="@+id/brand_oppo"
+                    android:layout_width="100dp"
                     android:layout_height="50dp"
-                    android:background="@drawable/iconbrand_puma"
+                    android:background="@drawable/logo_oppo"
                     android:contentDescription="Puma" />
             </LinearLayout>
         </HorizontalScrollView>
@@ -171,7 +174,7 @@
     <GridView
         android:id="@+id/home_listProduct"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="395dp"
         android:orientation="horizontal"
         android:layout_marginTop="20dp"
         android:layout_marginStart="20dp"
