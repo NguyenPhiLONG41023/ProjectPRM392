@@ -10,12 +10,17 @@
         app:showAsAction="always"
         android:id="@+id/menu_product"
         android:icon="@drawable/icon_phone"
-        android:title="Account Information"/>
+        android:title="Shop"/>
     <item
         app:showAsAction="always"
         android:id="@+id/menu_order"
         android:icon="@drawable/icon_order"
         android:title="Order"/>
+    <item
+        app:showAsAction="always"
+        android:id="@+id/menu_logout"
+        android:icon="@drawable/baseline_logout_24"
+        android:title="Logout"/>
     <item
         app:showAsAction="always"
         android:id="@+id/menu_settings"

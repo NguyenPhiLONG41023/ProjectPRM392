@@ -15,7 +15,7 @@
     tools:context=".HomePageActivity">
 
         <ImageButton
-            android:id="@+id/menu"
+            android:id="@+id/btn_menu"
             android:layout_width="45dp"
             android:layout_height="45dp"
             android:layout_marginStart="20dp"
@@ -26,7 +26,7 @@
             tools:ignore="TouchTargetSizeCheck" />
 
         <ImageButton
-            android:id="@+id/cart"
+            android:id="@+id/btn_cart"
             android:layout_width="45dp"
             android:layout_height="45dp"
             android:layout_marginTop="45dp"
@@ -42,8 +42,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:orientation="vertical"
-        app:layout_constraintLeft_toLeftOf="@id/menu"
-        app:layout_constraintTop_toBottomOf="@id/menu">
+        app:layout_constraintLeft_toLeftOf="@id/btn_menu"
+        app:layout_constraintTop_toBottomOf="@id/btn_menu">
 
         <TextView
             android:layout_width="wrap_content"
@@ -196,6 +196,5 @@
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header"
         app:menu="@menu/menu"
-        android:visibility="gone"
         />
 </androidx.drawerlayout.widget.DrawerLayout>

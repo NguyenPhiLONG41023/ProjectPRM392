@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:fillViewport="true"
     android:id="@+id/main"
-    tools:context=".SignUpActivity">
+    tools:context=".EditProfileActivity">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -16,17 +16,18 @@
             android:id="@+id/btnBack"
             android:layout_width="45dp"
             android:layout_height="45dp"
-            android:layout_marginTop="45dp"
             android:layout_marginStart="20dp"
+            android:layout_marginTop="45dp"
             android:background="@drawable/icon_back"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TouchTargetSizeCheck" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="105dp"
-            android:text="Sign Up"
+            android:text="Edit profile"
             android:textColor="#1D1E20"
             android:textSize="28sp"
             android:textStyle="bold"
@@ -54,15 +55,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
-                android:text="Email Address"
+                android:text="UserId"
                 android:textSize="13sp" />
-
             <EditText
-                android:id="@+id/signup_email"
+                android:id="@+id/editprofile_uid"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Enter email address"
-                tools:ignore="TouchTargetSizeCheck" />
+                tools:ignore="TouchTargetSizeCheck"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -71,43 +70,35 @@
                 android:text="Username"
                 android:textSize="13sp"
                 tools:ignore="TextSizeCheck" />
-
             <EditText
-                android:id="@+id/signup_username"
+                android:id="@+id/editprofile_username"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Enter username"
                 tools:ignore="TouchTargetSizeCheck" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
-                android:text="Password"
+                android:text="Email"
                 android:textSize="13sp" />
-
             <EditText
-                android:id="@+id/signup_password"
+                android:id="@+id/editprofile_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Enter password"
-                tools:ignore="TouchTargetSizeCheck"
-                android:password="true"/>
+                tools:ignore="TouchTargetSizeCheck" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
-                android:text="Confirm Password"
+                android:text="PhoneNumber"
                 android:textSize="13sp" />
-
             <EditText
-                android:id="@+id/signup_confirmpassword"
+                android:id="@+id/editprofile_phonenumber"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Enter password"
-                tools:ignore="TouchTargetSizeCheck"
-                android:password="true"/>
+                tools:ignore="TouchTargetSizeCheck" />
         </LinearLayout>
 
         <LinearLayout
@@ -117,39 +108,20 @@
             android:layout_marginBottom="20dp"
             android:gravity="center"
             android:orientation="horizontal"
-            app:layout_constraintBottom_toTopOf="@+id/signup_button"
+            app:layout_constraintBottom_toTopOf="@+id/edit_button"
             app:layout_constraintRight_toRightOf="@+id/signup_form"
             app:layout_constraintTop_toBottomOf="@+id/signup_form"
-            app:layout_constraintVertical_bias="1.0">
-
-            <TextView
-                android:id="@+id/terms_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="5dp"
-                android:text="Already have an account?"
-                android:textColor="#8F959E"
-                android:textSize="15sp" />
-
-            <TextView
-                android:id="@+id/signin"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Signin"
-                android:textColor="#1D1E20"
-                android:textSize="15sp"
-                android:textStyle="bold" />
-        </LinearLayout>
+            app:layout_constraintVertical_bias="1.0"/>
 
 
         <Button
-            android:id="@+id/signup_button"
+            android:id="@+id/edit_button"
             android:layout_width="match_parent"
             android:layout_height="75dp"
             android:layout_gravity="center"
             android:background="#9775FA"
             android:gravity="center"
-            android:text="Sign Up"
+            android:text="Edit"
             android:textColor="#FEFEFE"
             android:textSize="18sp"
             android:textStyle="normal"

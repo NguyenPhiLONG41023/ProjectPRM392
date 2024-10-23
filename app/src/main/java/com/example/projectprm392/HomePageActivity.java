@@ -1,8 +1,11 @@
 package com.example.projectprm392;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
@@ -12,6 +15,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -61,10 +65,37 @@ public class HomePageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home_page);
         DrawerLayout drawerLayout = findViewById(R.id.drawerLayout);
         NavigationView navigationView = findViewById(R.id.navigationView);
+
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @SuppressLint("NonConstantResourceId")
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int id = item.getItemId();
+                if (id == R.id.menu_logout) {
+                    logout();
+                    return true;
+                } else if (id == R.id.menu_accountInfomation) {
+                    Intent intent1 = new Intent(HomePageActivity.this, EditProfileActivity.class);
+                    startActivity(intent1);
+                    return true;
+                } else if (id == R.id.menu_product) {
+                    // Xử lý menu product
+                    return true;
+                } else if (id == R.id.menu_order) {
+                    // Xử lý menu order
+                    return true;
+                } else if (id == R.id.menu_settings) {
+                    // Xử lý menu settings
+                    return true;
+                }
+                return false;
+            }
+        });
+
         searchInput = findViewById(R.id.search_input);
         searchButton = findViewById(R.id.search_button);
-        menuIcon = findViewById(R.id.menu);
-        cartIcon = findViewById(R.id.cart);
+        menuIcon = findViewById(R.id.btn_menu);
+        cartIcon = findViewById(R.id.btn_cart);
         brandApple = findViewById(R.id.brand_apple);
         brandXiaomi = findViewById(R.id.brand_xiaomi);
         brandSamsung = findViewById(R.id.brand_samsung);
@@ -75,6 +106,15 @@ public class HomePageActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 drawerLayout.openDrawer(navigationView);
+            }
+        });
+
+        //open cart
+        cartIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(HomePageActivity.this, CartMainActivity.class);
+                startActivity(intent1);
             }
         });
 
@@ -135,40 +175,7 @@ public class HomePageActivity extends AppCompatActivity {
         //tra ve ket qua cho client
         @Override
         protected void onPostExecute(String result) {
-            if(result != null && !result.isEmpty()) {
-                try{
-                    //dung jsonobject de lay ve doi tuong
-                    JSONArray pArray = new JSONArray(result);  //tra ve mang product
-                    //doc tung truong va dua vao doi tuong
-                    for(int i = 0; i < pArray.length(); i++) {
-                        JSONObject p = pArray.getJSONObject(i);  //lay ve doi tuong con
-                        String productId = p.getString("productId");  //lay du lieu truong styleID
-                        String brandName = p.getString("brandName");
-                        String productName = p.getString("productName");
-                        String quantity = p.getString("quantity");
-                        String description = p.getString("description");
-                        String price = p.getString("price");
-                        String image = p.getString("image");
-                        String status = p.getString("status");
-
-                        Product product = new Product();
-                        product.setProductId(productId);
-                        product.setBrandName(brandName);
-                        product.setProductName(productName);
-                        product.setQuantity(Integer.parseInt(quantity));
-                        product.setDescription(description);
-                        product.setPrice(price);
-                        product.setImage(image);
-                        product.setStatus(Integer.parseInt(status));
-                        list.add(product);
-                    }
-
-                    //refresh lai product list
-                    adapter.notifyDataSetChanged();
-                } catch (JSONException e) {
-                    throw new RuntimeException(e);
-                }
-            }
+            processProductData(result, "No products found");
         }
     }
 
@@ -199,41 +206,7 @@ public class HomePageActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(String result) {
-            if (result != null && !result.isEmpty()) {
-                try {
-                    list.clear();
-
-                    JSONArray pArray = new JSONArray(result);
-                    for (int i = 0; i < pArray.length(); i++) {
-                        JSONObject p = pArray.getJSONObject(i);
-                        String productId = p.getString("productId");
-                        String brandName = p.getString("brandName");
-                        String productName = p.getString("productName");
-                        String quantity = p.getString("quantity");
-                        String description = p.getString("description");
-                        String price = p.getString("price");
-                        String image = p.getString("image");
-                        String status = p.getString("status");
-
-                        Product product = new Product();
-                        product.setProductId(productId);
-                        product.setBrandName(brandName);
-                        product.setProductName(productName);
-                        product.setQuantity(Integer.parseInt(quantity));
-                        product.setDescription(description);
-                        product.setPrice(price);
-                        product.setImage(image);
-                        product.setStatus(Integer.parseInt(status));
-                        list.add(product);
-                    }
-                    adapter.notifyDataSetChanged();
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                    Toast.makeText(HomePageActivity.this, "Error parsing data", Toast.LENGTH_SHORT).show();
-                }
-            } else {
-                Toast.makeText(HomePageActivity.this, "No products found", Toast.LENGTH_SHORT).show();
-            }
+            processProductData(result, "No products found");
         }
     }
 
@@ -265,42 +238,50 @@ public class HomePageActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(String result) {
-            if (result != null && !result.isEmpty()) {
-                try {
-                    // Xóa list cũ
-                    list.clear();
-
-                    JSONArray pArray = new JSONArray(result);
-                    for (int i = 0; i < pArray.length(); i++) {
-                        JSONObject p = pArray.getJSONObject(i);
-                        String productId = p.getString("productId");
-                        String brandName = p.getString("brandName");
-                        String productName = p.getString("productName");
-                        String quantity = p.getString("quantity");
-                        String description = p.getString("description");
-                        String price = p.getString("price");
-                        String image = p.getString("image");
-                        String status = p.getString("status");
-
-                        Product product = new Product();
-                        product.setProductId(productId);
-                        product.setBrandName(brandName);
-                        product.setProductName(productName);
-                        product.setQuantity(Integer.parseInt(quantity));
-                        product.setDescription(description);
-                        product.setPrice(price);
-                        product.setImage(image);
-                        product.setStatus(Integer.parseInt(status));
-                        list.add(product);
-                    }
-                    adapter.notifyDataSetChanged();
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                    Toast.makeText(HomePageActivity.this, "Error parsing data", Toast.LENGTH_SHORT).show();
-                }
-            } else {
-                Toast.makeText(HomePageActivity.this, "No products found for this brand", Toast.LENGTH_SHORT).show();
-            }
+            processProductData(result, "No products found");
         }
+    }
+
+    private void processProductData(String result, String errorMessage) {
+        if (result != null && !result.isEmpty()) {
+            try {
+                list.clear();
+                JSONArray productArray = new JSONArray(result);
+                for (int i = 0; i < productArray.length(); i++) {
+                    JSONObject p = productArray.getJSONObject(i);
+                    Product product = new Product();
+                    product.setProductId(p.getString("productId"));
+                    product.setBrandName(p.getString("brandName"));
+                    product.setProductName(p.getString("productName"));
+                    product.setQuantity(Integer.parseInt(p.getString("quantity")));
+                    product.setDescription(p.getString("description"));
+                    product.setPrice(p.getString("price"));
+                    product.setImage(p.getString("image"));
+                    product.setStatus(Integer.parseInt(p.getString("status")));
+                    list.add(product);
+                }
+                adapter.notifyDataSetChanged();
+            } catch (JSONException e) {
+                e.printStackTrace();
+                Toast.makeText(HomePageActivity.this, "Error parsing data", Toast.LENGTH_SHORT).show();
+            }
+        } else {
+            Toast.makeText(HomePageActivity.this, errorMessage, Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void logout() {
+        SharedPreferences sharedPreferences = getSharedPreferences("UserData", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.clear();
+        editor.apply();
+
+        Toast.makeText(HomePageActivity.this, "You have been logged out", Toast.LENGTH_SHORT).show();
+
+        // Chuyển hướng người dùng về màn hình Login
+        Intent intent = new Intent(HomePageActivity.this, LoginActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);  // Xóa stack để người dùng không quay lại HomePageActivity
+        startActivity(intent);
+        finish();
     }
 }

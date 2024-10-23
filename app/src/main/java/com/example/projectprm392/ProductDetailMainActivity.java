@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -23,6 +24,7 @@ public class ProductDetailMainActivity extends AppCompatActivity {
     TextView txtName, txtPrice;
     WebView webDesc;
     Button btnAddToCart;
+    ImageButton btnBack, btnCart;
     private CartManager cartManager;
     @SuppressLint("MissingInflatedId")
     @Override
@@ -35,6 +37,8 @@ public class ProductDetailMainActivity extends AppCompatActivity {
         txtPrice = findViewById(R.id.product_price);
         webDesc = findViewById(R.id.product_desc);
         btnAddToCart = findViewById(R.id.addtocart_button);
+        btnBack = findViewById(R.id.btn_back);
+        btnCart = findViewById(R.id.btn_cart);
         //khoi tao cart
         cartManager = CartManager.getInstance();
         //nhan du lieu tu intent
@@ -56,6 +60,21 @@ public class ProductDetailMainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 addToCartClicked();
+            }
+        });
+
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+        btnCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(ProductDetailMainActivity.this, CartMainActivity.class);
+                startActivity(intent1);
             }
         });
     }

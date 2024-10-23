@@ -1,6 +1,8 @@
 package com.example.projectprm392;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -18,6 +20,7 @@ public class CartMainActivity extends AppCompatActivity {
     ListView lv;
     TextView txtTotal;
     private CartAdapter cartAdapter;
+    ImageButton btnBack;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,21 +31,19 @@ public class CartMainActivity extends AppCompatActivity {
         //Lay danh sach product trong cart
         List<Product> cartItems = CartManager.getInstance().getCartItems();
 
-        //Tinh total price
-//        double total = 0;
-//        for(Product item : cartItems) {
-//            total += Double.parseDouble(item.getPrice());
-//        }
-//
-//        DecimalFormat formatter = new DecimalFormat("#,###,###");
-//        String formattedTotal = formatter.format(total);
-//        txtTotal.setText(formattedTotal + " VND");
-
-
         cartAdapter = new CartAdapter(this, cartItems);
         lv.setAdapter(cartAdapter);
 
         calculateTotalPrice();
+
+        //back to previous activity
+        btnBack = findViewById(R.id.btn_back);
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     public void calculateTotalPrice() {
