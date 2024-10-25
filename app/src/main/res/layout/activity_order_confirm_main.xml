@@ -14,7 +14,7 @@
         android:layout_height="match_parent">
 
         <ImageButton
-            android:id="@+id/imageView"
+            android:id="@+id/orderconfirm_btnBack"
             android:layout_width="45dp"
             android:layout_height="45dp"
             android:layout_marginStart="20dp"
@@ -48,7 +48,7 @@
             android:layout_marginBottom="131dp"
             android:gravity="center"
             android:orientation="vertical"
-            app:layout_constraintBottom_toTopOf="@+id/login_button"
+            app:layout_constraintBottom_toTopOf="@+id/orderconfirm_continueshopping"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView2">
@@ -76,7 +76,7 @@
 
 
         <Button
-            android:id="@+id/login_button"
+            android:id="@+id/orderconfirm_continueshopping"
             android:layout_width="match_parent"
             android:layout_height="75dp"
             android:layout_gravity="center"

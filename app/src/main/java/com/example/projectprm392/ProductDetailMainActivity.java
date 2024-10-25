@@ -80,32 +80,6 @@ public class ProductDetailMainActivity extends AppCompatActivity {
                 startActivity(intent1);
             }
         });
-
-        NavigationView navigationView = findViewById(R.id.navigationView);
-
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @SuppressLint("NonConstantResourceId")
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                int id = item.getItemId();
-                if (id == R.id.menu_logout) {
-                    //logout();
-                    return true;
-                } else if (id == R.id.menu_accountInfomation) {
-                    Intent intent1 = new Intent(ProductDetailMainActivity.this, EditProfileActivity.class);
-                    startActivity(intent1);
-                    return true;
-                } else if (id == R.id.menu_product) {
-                    Intent intent1 = new Intent(ProductDetailMainActivity.this, HomePageActivity.class);
-                    startActivity(intent1);
-                    return true;
-                } else if (id == R.id.menu_order) {
-                    // Xử lý menu order
-                    return true;
-                }
-                return false;
-            }
-        });
     }
 
     private void addToCartClicked() {

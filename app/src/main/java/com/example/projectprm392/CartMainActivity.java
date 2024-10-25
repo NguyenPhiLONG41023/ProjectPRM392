@@ -1,5 +1,6 @@
 package com.example.projectprm392;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -15,17 +16,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.projectprm392.adapter.CartAdapter;
 import com.example.projectprm392.interfaceAPI.InterfaceCreateOrder;
 import com.example.projectprm392.model.CartManager;
-import com.example.projectprm392.model.LoginResponse;
-import com.example.projectprm392.model.Order;
 import com.example.projectprm392.model.OrderDetail;
 import com.example.projectprm392.model.OrderRequest;
 import com.example.projectprm392.model.OrderResponse;
 import com.example.projectprm392.model.Product;
 
-import org.json.JSONObject;
-
 import java.text.DecimalFormat;
-import java.util.Date;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -146,7 +142,26 @@ public class CartMainActivity extends AppCompatActivity {
             interfaceCreateOrder.createOrderDetail(orderDetail).enqueue(new Callback<OrderDetail>() {
                 @Override
                 public void onResponse(Call<OrderDetail> call, Response<OrderDetail> response) {
+                    if (response.isSuccessful()) {
+                        //update product quantity
+                        updateProductQuantity(interfaceCreateOrder, product.getProductId(), product.getQuantity());
 
+                        int count = successCount.incrementAndGet();
+                        if (count == totalItems && !hasError.get()) {
+                            //update thanh cong, sang trang thong bao
+                            runOnUiThread(() -> {
+                                CartManager.getInstance().clearCart();
+                                Intent intent = new Intent(CartMainActivity.this, OrderConfirmMainActivity.class);
+                                startActivity(intent);
+                                finish();
+                            });
+                        }
+                    } else {
+                        hasError.set(true);
+                        runOnUiThread(() -> {
+                            Toast.makeText(CartMainActivity.this, "Failed to create order detail", Toast.LENGTH_SHORT).show();
+                        });
+                    }
                 }
 
                 @Override
@@ -155,6 +170,25 @@ public class CartMainActivity extends AppCompatActivity {
                 }
             });
         }
+    }
+
+    private void updateProductQuantity(InterfaceCreateOrder interfaceCreateOrder, String productId, int quantity) {
+        interfaceCreateOrder.updateProductQuantity(productId, quantity).enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if (!response.isSuccessful()) {
+                    runOnUiThread(() -> {
+                        Toast.makeText(CartMainActivity.this, "Failed to update product quantity", Toast.LENGTH_SHORT).show();
+                    });
+                }
+            }
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                runOnUiThread(() -> {
+                    Toast.makeText(CartMainActivity.this, "Error updating product quantity: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                });
+            }
+        });
     }
 
 }
