@@ -3,6 +3,7 @@ package com.example.projectprm392;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.Button;
@@ -11,10 +12,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.projectprm392.model.CartManager;
 import com.example.projectprm392.model.Product;
+import com.google.android.material.navigation.NavigationView;
 import com.squareup.picasso.Picasso;
 
 import java.text.DecimalFormat;
@@ -77,6 +80,32 @@ public class ProductDetailMainActivity extends AppCompatActivity {
                 startActivity(intent1);
             }
         });
+
+        NavigationView navigationView = findViewById(R.id.navigationView);
+
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @SuppressLint("NonConstantResourceId")
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int id = item.getItemId();
+                if (id == R.id.menu_logout) {
+                    //logout();
+                    return true;
+                } else if (id == R.id.menu_accountInfomation) {
+                    Intent intent1 = new Intent(ProductDetailMainActivity.this, EditProfileActivity.class);
+                    startActivity(intent1);
+                    return true;
+                } else if (id == R.id.menu_product) {
+                    Intent intent1 = new Intent(ProductDetailMainActivity.this, HomePageActivity.class);
+                    startActivity(intent1);
+                    return true;
+                } else if (id == R.id.menu_order) {
+                    // Xử lý menu order
+                    return true;
+                }
+                return false;
+            }
+        });
     }
 
     private void addToCartClicked() {
@@ -94,4 +123,6 @@ public class ProductDetailMainActivity extends AppCompatActivity {
         Intent intent = new Intent(ProductDetailMainActivity.this, CartMainActivity.class);
         startActivity(intent);
     }
+
+
 }

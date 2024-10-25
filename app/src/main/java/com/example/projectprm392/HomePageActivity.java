@@ -84,9 +84,6 @@ public class HomePageActivity extends AppCompatActivity {
                 } else if (id == R.id.menu_order) {
                     // Xử lý menu order
                     return true;
-                } else if (id == R.id.menu_settings) {
-                    // Xử lý menu settings
-                    return true;
                 }
                 return false;
             }

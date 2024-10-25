@@ -39,7 +39,7 @@
 
 
     <Button
-        android:id="@+id/addtocart_button"
+        android:id="@+id/checkout_button"
         android:layout_width="match_parent"
         android:layout_height="75dp"
         android:layout_gravity="center"
@@ -150,5 +150,6 @@
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header"
         app:menu="@menu/menu"
+        android:visibility="gone"
         />
 </androidx.drawerlayout.widget.DrawerLayout>
