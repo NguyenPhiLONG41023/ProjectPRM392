@@ -79,10 +79,14 @@ public class HomePageActivity extends AppCompatActivity {
                     startActivity(intent1);
                     return true;
                 } else if (id == R.id.menu_product) {
-                    // Xử lý menu product
                     return true;
                 } else if (id == R.id.menu_order) {
-                    // Xử lý menu order
+                    Intent intent1 = new Intent(HomePageActivity.this, OrderActivity.class);
+                    startActivity(intent1);
+                    return true;
+                } else if (id == R.id.menu_changepassword) {
+                    Intent intent1 = new Intent(HomePageActivity.this, NewPasswordActivity.class);
+                    startActivity(intent1);
                     return true;
                 }
                 return false;

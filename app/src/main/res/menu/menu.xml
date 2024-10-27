@@ -18,12 +18,12 @@
         android:title="Order"/>
     <item
         app:showAsAction="always"
+        android:id="@+id/menu_changepassword"
+        android:icon="@drawable/baseline_password_24"
+        android:title="Change Password"/>
+    <item
+        app:showAsAction="always"
         android:id="@+id/menu_logout"
         android:icon="@drawable/baseline_logout_24"
         android:title="Logout"/>
-    <item
-        app:showAsAction="always"
-        android:id="@+id/menu_settings"
-        android:icon="@drawable/icon_setting"
-        android:title="Settings"/>
 </menu>
