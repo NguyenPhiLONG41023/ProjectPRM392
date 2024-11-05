@@ -57,7 +57,7 @@ public class OrderAdapter extends BaseAdapter {
         if (orderResponse != null) {
             SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
             holderOrder.orderDate.setText(dateFormat.format(orderResponse.getOrderDate()));
-            holderOrder.totalPrice.setText(String.format(Locale.getDefault(), "$%.2f", orderResponse.getTotalPrice()));
+            holderOrder.totalPrice.setText(String.format(Locale.getDefault(), "%,.0f VND", orderResponse.getTotalPrice()));
             holderOrder.status.setText(orderResponse.getStatus());
         }
         return convertView;
