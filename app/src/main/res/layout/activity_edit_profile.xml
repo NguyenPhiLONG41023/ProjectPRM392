@@ -61,7 +61,9 @@
                 android:id="@+id/editprofile_uid"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:ignore="TouchTargetSizeCheck"/>
+                tools:ignore="TouchTargetSizeCheck"
+                android:enabled="false"
+                android:focusable="false"/>
 
             <TextView
                 android:layout_width="wrap_content"
